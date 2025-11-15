@@ -1935,7 +1935,7 @@ const tasks = [
   {id:103, description:"Накопичити 200 нікусів", reward:()=>addBPW(1200), check:()=> balance>=200, completed:false},
   {id:104, description:"Накопичити 100 нікусів", reward:()=>addBPW(1000), check:()=> balance>=100, completed:false},
   {id:105, description:"Отримати предмет преміум", reward:()=>addBPW(1800), check:()=> inventory.some(i=>i.premium===true), completed:false},
-  {id:106, description:"Отримати І що або Нон-стонкс", reward:()=>addBPW(1200), check:()=>inventory.some(i=>["І що?","нон-стонкс"].includes(i.name)), completed:false},
+  {id:106, description:"Отримати І що або Нон-стонкс", reward:()=>addBPW(1200), check:()=>inventory.some(i=>["І що?","нот-стонкс"].includes(i.name)), completed:false},
   {id:107, description:"Отримати Белуга або Том", reward:()=>addBPW(1500), check:()=>inventory.some(i=>["Белуга","Том"].includes(i.name)), completed:false},
   {id:108, description:"Отримати Попугай-а або Надрозум", reward:()=>addBPW(2200), check:()=>inventory.some(i=>["Попугай-а","Надрозум"].includes(i.name)), completed:false},
   {id:109, description:"Отримати 1487 або Сумно або Попугайчик", reward:()=>addBPW(1200), check:()=>inventory.some(i=>["1487","Сумно","Попугайчик"].includes(i.name)), completed:false},
