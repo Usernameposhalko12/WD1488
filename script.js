@@ -2311,7 +2311,6 @@ function MenuStarterPass() {
   }
 
   container.innerHTML = `
-    <!-- 🔹 ВЕРХНЯ СТРІЧКА -->
     <div class="headerBar" style="display:flex; align-items:center; padding:8px 12px; background:#b7e9ff; border-radius:8px;">
       <button class="backBtn" onclick="openEventsMenu()" style="margin-right:10px;">← Назад</button>
       <span class="headerTitle" style="font-size:20px; font-weight:bold;">🎁 Starter Pass</span>
@@ -2325,7 +2324,9 @@ function MenuStarterPass() {
       padding:10px; 
       border:1px solid #ccc; 
       border-radius:10px; 
-      margin-top:10px;">
+      margin-top:10px;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;">
     </div>
   `;
 
@@ -2335,13 +2336,10 @@ function MenuStarterPass() {
     const claimed = r.day <= dayIndex;
     const today = new Date().toDateString();
     const isTodayClaim = today === lastClaim;
-
-    let locked = false;
-    if (r.day > dayIndex + 1) locked = true;
-    if (r.day === dayIndex + 1 && isTodayClaim) locked = true;
+    let locked = r.day > dayIndex + 1 || (r.day === dayIndex + 1 && isTodayClaim);
 
     const box = document.createElement("div");
-    box.style = `
+    box.style.cssText = `
       display:inline-block;
       width:130px;
       margin:6px;
@@ -2349,20 +2347,20 @@ function MenuStarterPass() {
       border:2px solid #8fd3ff;
       padding:6px;
       border-radius:10px;
-      cursor:${locked || claimed ? "not-allowed" : "pointer"};
       background:${claimed ? "#C9F6FF" : "#2E8BC0"};
+      cursor:${locked || claimed ? "not-allowed" : "pointer"};
+      -webkit-tap-highlight-color: transparent;
     `;
+    box.style.touchAction = "manipulation";
 
     box.innerHTML = `
-<img src="img/case_${r.reward}.png" style="
-  width:100px;
-  height:100px;
-  object-fit:contain;
-  image-rendering:auto; /* ← Нормальна якість */
-">
-
+      <img src="img/case_${r.reward}.png" style="
+        width:100px;
+        height:100px;
+        object-fit:contain;
+        image-rendering:auto;
+      ">
       <div style="color:black; margin-top:4px;">День ${r.day}</div>
-
       <div style="
         color:black;
         max-width:100px;
@@ -2374,21 +2372,18 @@ function MenuStarterPass() {
       ">
         ${getCaseName(r.reward)}
       </div>
-
       ${locked ? "🔒" : (claimed ? "✅ Отримано" : "➡ Натисни")}
     `;
 
-    box.onclick = () => {
+    box.addEventListener("click", e => {
+      e.preventDefault();
       if (locked || claimed) return;
-
       lastClaim = today;
       localStorage.setItem(currentUser + "_starter_lastClaim", today);
       localStorage.setItem(currentUser + "_starter_index", r.day);
-
       addCase(r.reward);
-
       MenuStarterPass();
-    };
+    });
 
     row.appendChild(box);
   });
@@ -2417,7 +2412,6 @@ function MenuStarterPass() {
         </div>
       </div>
     `;
-
     document.getElementById("closeStarterModal").onclick = () => {
       document.getElementById("starterModal").remove();
       localStorage.setItem(currentUser + "_starter_modalShown", "true");
