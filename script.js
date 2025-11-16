@@ -1798,7 +1798,7 @@ const container = document.getElementById("app");
     `;
 
       const btn = document.getElementById("premiumBtn1Winter");
-if (localStorage.getItem("WinterPremiumUnlocked") === "1" && btn){
+if (localStorage.getItem("premiumBtn1Winter") === "1" && btn){
     btn.disabled = false;
     btn.title = "";
 }
