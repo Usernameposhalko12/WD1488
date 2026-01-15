@@ -369,7 +369,7 @@ function claimDailyReward() {
   addCase("absolute");
 
   localStorage.setItem(key, now);
-  alert("🎉 Ви отримали absolute кейс!");
+  alert("🎉 Ви отримали Міжсезонний кейс!");
   mainMenu();
 }
 
@@ -377,12 +377,12 @@ function shopMenu() {
   const shopItems = [
     { name: "Кейс Зима25", price: 40, img: "case_wint25.png", type: "wint25" },
     { name: "Бокс Зима25", price: 30, img: "case_wint25box.png", type: "wint25box" },
-    { name: "Різдвяний Кейс", price: 60, img: "case_wint25gift.png", type: "wint25gift" },   
-    { name: "Зимовий Колекційний Кейс", price: 80, img: "case_kolek2.png", type: "kolek2" },    
-    { name: "Міжсезонний Кейс", price: 75, img: "case_absolute.png", type: "absolute" }, 
+    { name: "Різдвяний Кейс", price: 50, img: "case_wint25gift.png", type: "wint25gift" },   
+    { name: "Зимовий Колекційний Кейс", price: 50, img: "case_kolek2.png", type: "kolek2" },    
+    { name: "Міжсезонний Кейс", price: 65, img: "case_absolute.png", type: "absolute" }, 
     { name: "Кейс з насінням 2", price: 200, img: "case_NN2.png", type: "NN2" },  
-    { name: "CatCollection", price: 100, img: "case_catcollection.png", type: "catcollection" },
-    { name: "DogCollection", price: 100, img: "case_dogcollection.png", type: "dogcollection" },   
+    { name: "CatCollection", price: 80, img: "case_catcollection.png", type: "catcollection" },
+    { name: "DogCollection", price: 80, img: "case_dogcollection.png", type: "dogcollection" },   
     { name: "Аркадний кейс", price: 15, img: "case_arcase.png", type: "arcase" },
     { name: "Ключ від Аркадного кейсу", price: 50, img: "key_arcase.png", type: "arcaseKey", isKey: true }
   ];
@@ -4730,7 +4730,14 @@ const allItems = [
   {name:"МастурБіст", img:"masturbist.png", rarity:"Виняткова", collection:"Halloween25"},
   {name:"Ждун", img:"zhdun.png", rarity:"Звичайна", collection:"Halloween25"},
   {name:"Троль", img:"troll.png", rarity:"Звичайна", collection:"Halloween25"},
-
+  {name:"Лавочка", img:"lav.png", rarity:"Секретна", collection:"Halloween25"},
+  {name:"Йогурт", img:"yog.png", rarity:"Секретна", collection:"Halloween25"},
+  {name:"Живчик", img:"jiv.png", rarity:"Епічна", collection:"Halloween25"},
+  {name:"Пістолетік", img:"pistol.png", rarity:"Епічна", collection:"Halloween25"},
+  {name:"ГДЗ", img:"gdz.png", rarity:"Виняткова", collection:"Halloween25"},
+  {name:"Чат Гпт", img:"gpt.png", rarity:"Виняткова", collection:"Halloween25"},
+  {name:"Мʼяч", img:"mi.png", rarity:"Звичайна", collection:"Halloween25"},
+  {name:"ніщета", img:"ni.png", rarity:"Звичайна", collection:"Halloween25"},
 
   //osin25
   {name:"Бомбордіро", img:"red1.png", rarity:"Секретна", collection:"Autumn25"},
@@ -4757,6 +4764,15 @@ const allItems = [
   {name:"Попугайчик", img:"PP.png", rarity:"Звичайна", collection:"Winter25"},
   {name:"Сумно", img:"S.png", rarity:"Звичайна", collection:"Winter25"},
   {name:"1487", img:"1487.png", rarity:"Звичайна", collection:"Winter25"},
+
+  {name:"Вищета", img:"21.png", rarity:"Секретна", collection:"Winter25"},
+  {name:"Пірнівський Двіж", img:"22.png", rarity:"Секретна", collection:"Winter25"},
+  {name:"ППО", img:"23.png", rarity:"Епічна", collection:"Winter25"},
+  {name:"Крейда", img:"24.png", rarity:"Епічна", collection:"Winter25"},
+  {name:"Зошит", img:"25.png", rarity:"Виняткова", collection:"Winter25"},
+  {name:"Мʼята", img:"26.png", rarity:"Виняткова", collection:"Winter25"},
+  {name:"Хліб", img:"27.png", rarity:"Звичайна", collection:"Winter25"},
+  {name:"Динозавр", img:"dino.png", rarity:"Звичайна", collection:"Winter25"},
 
   // Harvest25
   {name:"Бобер", img:"beaver.png", rarity:"Епічна", collection:"Harvest25"},
@@ -4827,17 +4843,17 @@ const collectionRespect = {
   "Harvest": 0.8,
   "NASINNA1": 0.8,        // підколекція 1
   "NASINNA": 0.8,         // підколекція 2
-  "Autumn25": 0.65,
-  "FallAlternative25": 0.7,
+  "Autumn25": 0.8,
+  "FallAlternative25": 0.75,
   "Halloween25": 0.6,
   "Winter Dreams": 0.6,
-  "Winter25": 0.5,
+  "Winter25": 0.45,
   "Harvest25": 0.8,
   "CatCollection": 0.5,
   "DogCollection": 0.5,
   "Mid-season": 0.5,
   "WINTERDREAMS": 0.6,
-  "Autumnus25": 0.65
+  "Autumnus25": 0.7
 };
 
 function getItemPrice(item) {
@@ -5044,7 +5060,7 @@ function confirmSell(){
   dosvid += 4;
   localStorage.setItem(currentUser+"_dosvid", dosvid);
 
-  alert(`Продано: ${sold} шт.\nОтримано: ${total} нікусів\n+4 досвід`);
+  alert(`Продано: ${sold} шт.\nОтримано: ${total} нікусів`);
 
   closeSellModal();
 }
